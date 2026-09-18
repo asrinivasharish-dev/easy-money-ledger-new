@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Easy Money Ledger</string>
+    <string name="total_money_gave">Total Money I Gave</string>
+    <string name="total_money_took">Total Money I Took</string>
+    <string name="total_interest">Total Interest</string>
+    <string name="total_receivable">Total Amount Receivable</string>
+    <string name="total_payable">Total Amount Payable</string>
+    <string name="money_i_gave">Money I Gave</string>
+    <string name="money_i_took">Money I Took</string>
+    <string name="add_transaction">+ Add Transaction</string>
+    <string name="currency_symbol">₹</string>
+</resources>

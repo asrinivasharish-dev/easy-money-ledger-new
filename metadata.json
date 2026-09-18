@@ -1,0 +1,6 @@
+{
+  "name": "Easy Money Ledger",
+  "description": "Personal loan and borrowing manager with Google multi-device sync, simple interest calculation, repayment tracking, offline Room database, and local backup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

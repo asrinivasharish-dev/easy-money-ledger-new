@@ -1,0 +1,34 @@
+{
+  "collections": {
+    "users": {
+      "path": "users/{userId}",
+      "subcollections": {
+        "loans": {
+          "path": "users/{userId}/loans/{loanId}",
+          "description": "User personal loans and borrowings ledger records",
+          "fields": {
+            "id": { "type": "string", "required": true },
+            "userId": { "type": "string", "required": true },
+            "personName": { "type": "string", "required": true },
+            "mobileNumber": { "type": "string", "required": false },
+            "amount": { "type": "number", "required": true },
+            "transactionType": { "type": "string", "required": true, "values": ["GIVEN", "TAKEN"] },
+            "interestType": { "type": "string", "required": true, "values": ["NO_INTEREST", "SIMPLE_INTEREST"] },
+            "interestRate": { "type": "number", "required": true },
+            "interestFrequency": { "type": "string", "required": true, "values": ["MONTHLY", "YEARLY"] },
+            "startDate": { "type": "string", "required": true },
+            "dueDate": { "type": "string", "required": true },
+            "notes": { "type": "string", "required": false },
+            "category": { "type": "string", "required": false },
+            "paymentMedium": { "type": "string", "required": false },
+            "transactionRef": { "type": "string", "required": false },
+            "additionalCredits": { "type": "array", "required": false },
+            "repayments": { "type": "array", "required": false },
+            "createdAt": { "type": "number", "required": true },
+            "updatedAt": { "type": "number", "required": true }
+          }
+        }
+      }
+    }
+  }
+}
