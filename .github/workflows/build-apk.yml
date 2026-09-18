@@ -3,7 +3,7 @@ name: Build Easy Money Ledger APK
 on:
   push:
     branches: [ "main", "master" ]
-  workflow_dispatch: # Allows manual 1-click trigger
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,18 +19,33 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.7'
 
-      - name: Build Debug APK with Gradle
+      - name: Build Debug APK
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
         run: |
+          # If files were uploaded inside an 'android' subfolder, change directory into it
+          if [ -d "android" ] && [ -f "android/settings.gradle.kts" ]; then
+            cd android
+          fi
+          
+          # Auto-accept all Android SDK licenses
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
+          # Compile the debug APK
           gradle :app:assembleDebug --stacktrace
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: EasyMoneyLedger-app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            app/build/outputs/apk/debug/*.apk
+            android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+: 
